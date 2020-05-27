@@ -4,6 +4,7 @@ import { ActionCable } from 'react-actioncable-provider';
 import MessageContainer from './containers/messageContainer';
 import Cable from './components/cable';
 import { API_ROOT, HEADERS } from './constraints/index'
+import NavBar from './components/layout/NavBar'
 
 
 class App extends Component {
@@ -55,6 +56,7 @@ class App extends Component {
     const {conversations, activeConversation} = this.state
     return (
         <div>
+          <NavBar />
 
           <ActionCable channel={{channel: 'ConversationsChannel'}} onReceived={this.handleReceivedConversation} />
           {this.state.conversations.length ? (
