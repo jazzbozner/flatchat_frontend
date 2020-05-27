@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import ConversationsContainer from '../../containers/conversationsContainer'
+
 
 class NavBar extends Component {
 
@@ -11,16 +13,14 @@ class NavBar extends Component {
   }
 
   render() {
+    const { conversations, handleClick} = this.props
     return (
       <div>
         <nav>
           <div className="nav-wrapper">
             <a href="#" data-target="slide-out" className="sidenav-trigger show-on-large "><i className="material-icons">menu</i></a>
-            <a href="#" className="brand-logo right">Logo</a>
+            <a href="#" className="brand-logo right">FlatChat \\</a>
             <ul id="nav-mobile" className="left hide-on-med-and-down">
-              <li><a href="sass.html">Sass</a></li>
-              <li><a href="badges.html">Components</a></li>
-              <li><a href="collapsible.html">JavaScript</a></li>
             </ul>
           </div>
         </nav>
@@ -29,7 +29,7 @@ class NavBar extends Component {
         <li><a href="#!"><i className="material-icons">directions_run</i>Log Out</a></li>
           <li><a href="#!"><i className="material-icons">playlist_add</i>Add Conversation</a></li>
           <li><div className="divider"></div></li>
-          <li><a className="waves-effect" href="#!">conversaction1</a></li>
+          <ConversationsContainer conversations={conversations} handleClick={handleClick}/>
         </ul>
       </div>
     )

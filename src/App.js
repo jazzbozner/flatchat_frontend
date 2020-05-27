@@ -56,14 +56,12 @@ class App extends Component {
     const {conversations, activeConversation} = this.state
     return (
         <div>
-          <NavBar />
+          <NavBar conversations={conversations} handleClick={this.handleClick}/>
 
           <ActionCable channel={{channel: 'ConversationsChannel'}} onReceived={this.handleReceivedConversation} />
           {this.state.conversations.length ? (
             <Cable conversations={conversations} handleReceivedMessage={this.handleReceivedMessage} />
           ): null}
-
-          <ConversationsContainer conversations={conversations} handleClick={this.handleClick}/>
 
           {activeConversation ?
             <MessageContainer activeConversation={activeConversation} onAddMessage={this.onAddMessage} />

@@ -14,9 +14,10 @@ const MessageContainer = (props) => {
 
     return (
         <div>
-            <h1>{title}</h1>
-            <h3>{description}</h3>
+            <h4>{title}</h4>
+            <h5>{description}</h5>
             {populateMessages(messages)}
+            <div className="divider"></div>
             <MessageForm onAddMessage={props.onAddMessage} />
         </div>
     )
