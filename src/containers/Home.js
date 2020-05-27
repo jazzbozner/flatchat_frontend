@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ConversationsContainer from '../containers/conversationsContainer'
-import MessageContainer from '../containers/MessageContainer';
+import MessageContainer from '../containers/messageContainer';
 import Cable from '../components/cable';
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import { API_ROOT, HEADERS } from '../constraints/index'
