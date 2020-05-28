@@ -17,19 +17,6 @@ class App extends Component {
 
   render() {
     return (
-        // <div>
-        //   <NavBar conversations={conversations} handleClick={this.handleClick}/>
-
-        //   <ActionCable channel={{channel: 'ConversationsChannel'}} onReceived={this.handleReceivedConversation} />
-        //   {this.state.conversations.length ? (
-        //     <Cable conversations={conversations} handleReceivedMessage={this.handleReceivedMessage} />
-        //   ): null}
-
-        //   {activeConversation ?
-        //     <MessageContainer activeConversation={activeConversation} onAddMessage={this.onAddMessage} />
-        //   : null}
-        // </div>
-
           <Router>
             <div>
 

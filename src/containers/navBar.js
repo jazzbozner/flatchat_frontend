@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ConversationsContainer from '../../containers/conversationsContainer'
+import ConversationsContainer from './conversationsContainer'
 
 
 class NavBar extends Component {
@@ -13,7 +13,7 @@ class NavBar extends Component {
   }
 
   render() {
-    const { conversations, handleClick} = this.props
+    const { conversations, handleClick, onLogout } = this.props
     return (
       <div>
         <nav>
@@ -26,7 +26,7 @@ class NavBar extends Component {
         </nav>
 
         <ul id="slide-out" className="sidenav">
-        <li><a href="#!"><i className="material-icons">directions_run</i>Log Out</a></li>
+        <li onClick={onLogout}><a href="#!"><i className="material-icons">directions_run</i>Log Out</a></li>
           <li><a href="#!"><i className="material-icons">playlist_add</i>Add Conversation</a></li>
           <li><div className="divider"></div></li>
           <ConversationsContainer conversations={conversations} handleClick={handleClick}/>
@@ -37,14 +37,3 @@ class NavBar extends Component {
 }
 
 export default NavBar
-
-
-
-
-
-
-
-
-
-
-

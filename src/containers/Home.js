@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import ConversationsContainer from '../containers/conversationsContainer'
+import React, { Component, Fragment } from 'react';
+import NavBar from './navBar'
+import ConversationForm from '../components/forms/conversationForm'
 import MessageContainer from '../containers/messageContainer';
 import Cable from '../components/cable';
 import { ActionCableConsumer } from 'react-actioncable-provider';
@@ -57,11 +58,42 @@ class Home extends Component {
           })
         })
       }
+
+      onAddConversation = (conversation) => {
+        fetch("http://localhost:3000/conversations", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify({
+              conversations: {
+              
+              user_id: 13
+             } //hard coded - change with auth
+          })
+        })
+      }
+
+      showConversationForm = () => {
+        console.log("conversation form")
+      }
+
+      logout = () => {
+        console.log('logout')
+      }
+
+      
       render() {
           const {conversations, activeConversation} = this.state
         return(
-            <fragment>
-    
+            <Fragment>
+                <NavBar 
+                  conversations={conversations} 
+                  handleClick={this.handleClick}
+                  onshowConversationForm={this.showConversationForm}
+                  onLogout={this.logout}
+                />
                 <ActionCableConsumer 
                     channel={{channel: 'ConversationsChannel'}} 
                     onReceived={this.handleReceivedConversation} 
@@ -69,15 +101,18 @@ class Home extends Component {
                   {this.state.conversations.length ? (
                     <Cable conversations={conversations} handleReceivedMessage={this.handleReceivedMessage} />
                   ): null}
-    
-                <ConversationsContainer conversations={conversations} handleClick={this.handleClick}/>
                 {activeConversation ?
                     <MessageContainer activeConversation={activeConversation} onAddMessage={this.onAddMessage} />
                 : null}
-            </fragment>
+            </Fragment>
         )
       }
     
 }
 
 export default Home
+
+Home.defaultProps = {
+  conversations: [],
+  activeConversation: null
+}

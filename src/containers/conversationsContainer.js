@@ -19,7 +19,7 @@ const ConversationsContainer = (props) => {
                 <div>
                     <h5 className='center'>All Conversations</h5>
                     <ul>
-                        {populateConversations(conversations, handleClick)}
+                        {() => populateConversations(conversations, handleClick)}
                     </ul>
                 </div>
             :
