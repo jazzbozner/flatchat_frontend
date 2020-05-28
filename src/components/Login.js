@@ -1,9 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, Fragment} from 'react';
+import {useHistory, NavLink} from 'react-router-dom'
 
 const Login = () => {
 
+    const history = useHistory()
+
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [error, setError] = useState(false)
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value)
@@ -30,10 +35,21 @@ const Login = () => {
             })
         })
         .then(res => res.json())
-        .then(json => localStorage.setItem("token", json.jwt))
+        .then(json => {
+            if (json.error) {
+                setError(true)
+            } else {
+            localStorage.setItem("token", json.jwt)
+            setLoggedIn(true)}
+        })
     }
 
     return (
+        <Fragment>
+        {error ? history.push('/error'):null}
+        {loggedIn ? 
+            history.push('/home')
+            :
         <div>
             <h1>Log in!</h1>
             <form onSubmit={e => handleSubmit(e)}>
@@ -43,13 +59,16 @@ const Login = () => {
                     placeholder="Username"
                 />
                 <input
+                    type="password"
                     value={password}
                     onChange={e => handlePasswordChange(e)} 
                     placeholder="Password"
                 />
                 <button type="submit">Log in</button>
             </form>
-        </div>
+            <NavLink to="/signup">Sign Up</NavLink>
+        </div>}
+        </Fragment>
     )
 }
 
