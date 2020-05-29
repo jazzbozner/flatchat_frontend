@@ -24,7 +24,9 @@ code {
   margin: 5px;
   border-radius: 5px;
   padding-left: 5px;
-  background-color: lightblue
+  background-color: lightblue;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px black;
 }
 
 .messageHeader {
@@ -51,6 +53,9 @@ code {
 .button {
   background-color: #ee6e73;
   color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px black;
+  border: none;
 }
 
 .grid {
@@ -61,14 +66,17 @@ code {
 .participants {
   margin: 10px;
   padding: 10px;
-  text-align: right;
+  text-align: left;
   border: solid;
   border-width: thin;
   border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px black;
 }
 
 .msgView {
   max-height: 500px;
+  min-height: 500px;
   overflow-y: scroll;
 }
 
@@ -80,9 +88,62 @@ code {
 
 .banner {
   margin: .5rem 0 2rem 0;
-  margin-left: 40px;
+  margin-left: 25%;
 }
 
 .smaller {
   font-size: smaller;
+}
+
+.login_container {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.login {
+  margin: 10rem;
+  padding: 1rem;
+  border: solid;
+  border-radius: 20px;
+  width: 25rem;
+  display: inline-block;
+  background-color: #D4FAF8;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px black;
+}
+
+.cardHeader {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.no_conversations {
+  margin-top: 50px;
+  display: inline-block;
+  font-size: large;
+  font-weight: bold;
+}
+
+.conversation_li {
+  margin-left: 15px;
+  font-size: large;
+}
+
+.conversation_li:hover {
+  color: darkgray;
+  cursor: pointer;
+}
+
+.conversation_header {
+  margin-left: 5px;
+}
+
+.participants_header {
+  margin: auto;
+}
+
+.participant_li {
+  font-size: large;
+  margin-left: 2rem;
 }
